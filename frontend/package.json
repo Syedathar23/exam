@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "preview": "npx vite preview --host --port $PORT"
+    "preview": "cross-env PORT=$PORT vite preview --host"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -14,9 +14,9 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^10.1.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
     "vite": "^5.0.0"
   }
 }
-
