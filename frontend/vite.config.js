@@ -9,6 +9,6 @@ export default defineConfig({
     } : undefined,
   },
   preview: {
-    allowedHosts: ['.onrender.com']  // Allows all *.onrender.com subdomains
+    allowedHosts: ['exam-3-68hl.onrender.com']  // Allows all *.onrender.com subdomains
   }
 });
