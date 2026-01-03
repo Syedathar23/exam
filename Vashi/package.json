@@ -1,0 +1,11 @@
+{
+  "name": "vashi",
+  "version": "1.0.0",
+  "description": "End-to-end starter for reading and analyzing customer feedback. Backend offers REST endpoints with a lightweight sentiment/keyword heuristic; frontend lets you submit feedback and view insights.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,9 +1,9 @@
 import { useState } from "react";
+const API = import.meta.env.VITE_API_URL;
 
-const API_BASE = "";
 
 async function postJson(path, body) {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${API}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
@@ -28,7 +28,7 @@ function AuthPanel({ onAuth }) {
     setError("");
     setMessage("");
     try {
-      await postJson("/api/auth/signup", {
+      await postJson(`${API}/api/auth/signup`, {
         email: form.email,
         password: form.password,
         phone: form.phone || undefined,
@@ -48,7 +48,7 @@ function AuthPanel({ onAuth }) {
     setError("");
     setMessage("");
     try {
-      await postJson("/api/auth/login", { email: form.email, password: form.password });
+      await postJson(`${API}/api/auth/login`, { email: form.email, password: form.password });
       setMessage("OTP sent to your email.");
       setMode("otp");
     } catch (err) {
@@ -64,7 +64,7 @@ function AuthPanel({ onAuth }) {
     setError("");
     setMessage("");
     try {
-      const data = await postJson("/api/auth/verify-otp", { email: form.email, code: form.code });
+      const data = await postJson(`${API}/api/auth/verify-otp`, { email: form.email, code: form.code });
       onAuth?.(data.access);
       setMessage("Authenticated.");
     } catch (err) {
