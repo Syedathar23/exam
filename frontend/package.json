@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prebuild": "chmod +x ./node_modules/.bin/vite",
-    "build": "npx vite build",
+    "build": "vite build",
     "preview": "npx vite preview --port $PORT"
   },
   "dependencies": {
