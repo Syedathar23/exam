@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+package-lock.json  # Optional: Regenerate on install for consistency
+
+# Environment
+.env
+.env.local
+.env.*
+
+# OS junk
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# Builds
+dist/
+build/
