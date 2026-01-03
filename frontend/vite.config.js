@@ -14,6 +14,6 @@ export default defineConfig({
     }
   },
   preview: {
-    allowedHosts: ["https://exam-3-68hl.onrender.com"]
+    allowedHosts: [".onrender.com"]
   }
 });
