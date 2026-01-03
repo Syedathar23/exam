@@ -4,8 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "build": "npx vite build",
-  "preview": "npx vite preview --port $PORT"
+    "prebuild": "chmod +x ./node_modules/.bin/vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview --port $PORT"
   },
   "dependencies": {
     "react": "^18.3.1",
