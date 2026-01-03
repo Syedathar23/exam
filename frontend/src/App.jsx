@@ -5,10 +5,10 @@ import InsightCards from "./components/InsightCards.jsx";
 import FilterBar from "./components/FilterBar.jsx";
 import AuthPanel from "./components/AuthPanel.jsx";
 
-const API_BASE = "";
+const API = import.meta.env.VITE_API_URL;
 
 async function fetchJson(path, options = {}, accessToken) {
-  const res = await fetch(`${API_BASE}${path}`, {
+  const res = await fetch(`${API}${path}`, {
     headers: {
       "Content-Type": "application/json",
       ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
@@ -54,7 +54,7 @@ function App() {
     setError("");
     try {
       const query = buildQuery({ ...filters, ...opts });
-      const data = await fetchJson(`/api/feedback${query ? `?${query}` : ""}`, {}, accessToken);
+      const data = await fetchJson(`${API}/api/feedback${query ? `?${query}` : ""}`, {}, accessToken);
       setFeedback(data);
     } catch (err) {
       setError(err.message);
@@ -66,7 +66,7 @@ function App() {
   const loadStats = async () => {
     setStatsLoading(true);
     try {
-      const data = await fetchJson("/api/feedback/stats", {}, accessToken);
+      const data = await fetchJson(`${API}/api/feedback/stats`, {}, accessToken);
       setStats(data);
     } catch (err) {
       setError(err.message);
@@ -111,7 +111,7 @@ function App() {
     setError("");
     try {
       await fetchJson(
-        "/api/feedback",
+        `${API}/api/feedback`,
         {
           method: "POST",
           body: JSON.stringify(payload),
@@ -125,7 +125,7 @@ function App() {
   };
 
   const handleExport = () => {
-    window.open("/api/feedback/export", "_blank");
+    window.open(`${API}/api/feedback/export`, "_blank");
   };
 
   const handleAuthSuccess = (token) => {
