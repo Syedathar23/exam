@@ -4,11 +4,16 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: process.env.NODE_ENV === "development" ? {
-      "/api": "http://localhost:4000"
-    } : undefined,
+    proxy: {
+      "/api": {
+        target: "https://your-backend-subdomain.onrender.com",  // Your actual backend URL
+        changeOrigin: true,  // Helps with CORS headers
+        secure: true,  // For HTTPS
+        rewrite: (path) => path.replace(/^\/api/, '')  // Optional: Strips /api if backend expects /feedback
+      }
+    }
   },
   preview: {
-    allowedHosts: ['exam-3-68hl.onrender.com']  // Allows all *.onrender.com subdomains
+    allowedHosts: ["https://exam-3-68hl.onrender.com"]
   }
 });
