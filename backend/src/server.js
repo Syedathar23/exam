@@ -25,6 +25,17 @@ async function start() {
   await mongoose.connect(config.mongoUri);
   console.log("Connected to MongoDB");
 
+  app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Backend API is running! 🚀',
+    endpoints: [
+      '/api/feedback',  // List your actual routes here for docs
+      // Add others as needed
+    ],
+    status: 'healthy'
+  });
+});
+
   app.listen(config.port, () => {
     console.log(`API listening on http://localhost:${config.port}`);
   });
